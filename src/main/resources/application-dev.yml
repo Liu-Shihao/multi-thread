@@ -1,0 +1,30 @@
+#本地环境
+server:
+  port: 8080
+  servlet:
+    context-path: /multiThread
+spring:
+  application:
+    name: multi-thread
+#  jpa:
+#    show-sql: true
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/day27?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: 123456
+#    hikari:
+#      connection-timeout: 60000
+#      maximum-pool-size: 5
+#  cache:
+#    type: redis
+#  redis:
+#    host: 116.62.13.104
+#    port: 6379
+#    password: Lsh150371!
+#    # redis默认情况下有16个分片，这里配置具体使用的分片，默认为0
+#    database: 0
+#    lettuce:
+#      pool:
+#        # 连接池最大连接数(使用负数表示没有限制),默认8
+#        max-active: 100
