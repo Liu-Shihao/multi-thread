@@ -50,6 +50,13 @@
             <version>1.9.2</version>
         </dependency>
 
+        <!--@LogRecordAnnotation 搞定 SpringBoot 操作日志-->
+        <dependency>
+            <groupId>io.github.mouzt</groupId>
+            <artifactId>bizlog-sdk</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
 
         <!--SpringDataJPA-->
 <!--        <dependency>-->
