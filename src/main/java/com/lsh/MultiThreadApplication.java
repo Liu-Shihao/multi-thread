@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableLogRecord(tenant = "com.lsh.test")
 @SpringBootApplication
+//@ComponentScan("com.lsh.generator.*")
 public class MultiThreadApplication {
     public static void main(String[] args) {
         SpringApplication.run(MultiThreadApplication.class);
