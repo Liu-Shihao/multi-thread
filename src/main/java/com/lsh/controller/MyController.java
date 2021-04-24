@@ -1,10 +1,16 @@
 package com.lsh.controller;
 
 import com.lsh.annotation.MyLog;
+import com.lsh.entity.LogRecord;
 import com.lsh.model.Order;
+import com.lsh.service.MyService;
 import com.mzt.logapi.starter.annotation.LogRecordAnnotation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author ：LiuShihao
@@ -15,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/mylog")
 public class MyController {
+    @Autowired
+    MyService myService;
 
     public static final String ORDER = "ORDER";
 
@@ -62,6 +70,24 @@ public class MyController {
         // db insert order
         // System.out.println(1/0);
         return true;
+    }
+
+
+    @PostMapping("testAspect")
+    public Map<String,Object> testAspect(@RequestBody  LogRecord logRecord){
+        HashMap<String, Object> resp = new HashMap<>();
+        try {
+            resp.put("code",0000);
+            resp.put("msg","SUCCESS");
+            System.out.println("testAspect入参:"+logRecord);
+            myService.test1(logRecord);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("异常："+e.getMessage());
+            resp.put("code",9999);
+            resp.put("msg","FAIL");
+        }
+        return  resp;
     }
 
 }
