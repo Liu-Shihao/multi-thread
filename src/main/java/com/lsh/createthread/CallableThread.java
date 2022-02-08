@@ -16,13 +16,6 @@ public class CallableThread {
           // 创建多个有返回值的任务
           ArrayList<Future> futures = new ArrayList<>();
           for (int i = 0; i < 4 ; i++) {
-//               Callable c = new Callable() {
-//                    @Override
-//                    public Object call() throws Exception {
-//                         System.out.println("call方法执行");
-//                         return null;
-//                    }
-//               };
                //Lambda表达式写法
                Callable callable = () -> {
                     System.out.println("call方法执行");

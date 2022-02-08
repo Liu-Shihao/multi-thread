@@ -9,9 +9,8 @@ import java.util.concurrent.Executors;
  * @desc ：
  */
 public class NewCachedThreadPool {
-//    ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+    ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
     public static void main(String[] args) {
-        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
     }
 }
