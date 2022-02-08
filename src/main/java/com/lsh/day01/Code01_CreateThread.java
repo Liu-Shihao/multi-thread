@@ -1,12 +1,16 @@
 package com.lsh.day01;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/2/8 3:00 下午
  * @desc ：Java创建线程的几种方式
- * 1.继承Thread类，重写run方法
- * 2.实现Runnable接口，重写run方法
- * 3.实现Callable接口，重写call方法，有返回值，使用FutureTask类来包装Callable对象
+ * 1.继承Thread类，重写run方法。
+ * 2.实现Runnable接口，重写run方法。
+ * 3.实现Callable接口，重写call方法，有返回值，使用FutureTask类来包装Callable对象。
  */
 public class Code01_CreateThread {
 
@@ -31,11 +35,33 @@ public class Code01_CreateThread {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * 第三种：实现Callable接口，重写call方法
+     * 使用FutureTask作为Thread对象的target创建并启动新线程
+     */
+    public static class MyCallable implements Callable{
+
+        @Override
+        public Object call() throws Exception {
+            String str = "MyCallable call 方法执行";
+            return str;
+        }
+    }
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        //------------------------------------------------
         MyThread myThread = new MyThread();
         myThread.start();
-        System.out.println("=================");
+        //------------------------------------------------
         MyRunnable myRunnable = new MyRunnable();
         new Thread(myRunnable,"新线程").start();
+
+        //------------------------------------------------
+        MyCallable myCallable = new MyCallable();
+        FutureTask futureTask = new FutureTask<>(myCallable);
+        new Thread(futureTask,"又返回值线程").start();
+        System.out.println(futureTask.get());
+        //------------------------------------------------
+
     }
 }
