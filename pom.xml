@@ -9,6 +9,16 @@
     <version>1.0-SNAPSHOT</version>
     <description>马士兵 多线程与高并发</description>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.google.code.google-collections/google-collect -->
+        <dependency>
+            <groupId>com.google.code.google-collections</groupId>
+            <artifactId>google-collect</artifactId>
+            <version>snapshot-20080530</version>
+        </dependency>
+
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
