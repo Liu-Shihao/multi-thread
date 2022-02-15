@@ -1,8 +1,6 @@
 package com.lsh.day01;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * @author ：LiuShihao
@@ -53,15 +51,29 @@ public class Code01_CreateThread {
         MyThread myThread = new MyThread();
         myThread.start();
         //------------------------------------------------
+        new Thread(()->{
+            System.out.println("lambda表达式写法");
+        }).start();
+        //------------------------------------------------
         MyRunnable myRunnable = new MyRunnable();
         new Thread(myRunnable,"新线程").start();
 
         //------------------------------------------------
+        //使用Callable方式创建线程需要用FutureTask包装。
         MyCallable myCallable = new MyCallable();
+        //FutureTask 实现了RunnableFuture接口，而 RunnableFuture 实现了Runnable和Future两个接口
         FutureTask futureTask = new FutureTask<>(myCallable);
         new Thread(futureTask,"又返回值线程").start();
+        //futureTask.get() 是一个阻塞方法。
         System.out.println(futureTask.get());
         //------------------------------------------------
+        //使用线程池方式
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        executorService.execute(myRunnable);
+
+        Future f = executorService.submit(myCallable);
+        System.out.println(f.get());
+        executorService.shutdown();
 
     }
 }

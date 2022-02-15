@@ -1,5 +1,7 @@
 package com.lsh.day01;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/2/15 12:08 下午
@@ -27,13 +29,24 @@ public class Code04 {
         retry:
         for (;;) {
             for (;;) {
-                System.out.println("1");
+                System.out.println("inner");
                 //break retry; 内层循环结束并且直接跳出外层循环
                 break retry;
             }
 //            System.out.println("2");
         }
 //        System.out.println("3");
+
+        AtomicInteger atomicInteger = new AtomicInteger(1);
+        int i = atomicInteger.get();
+        new Thread(() ->{
+            atomicInteger.incrementAndGet();
+        }).start();
+
+        System.out.println(i);
+        System.out.println(atomicInteger.get());
+
+
 
     }
 
