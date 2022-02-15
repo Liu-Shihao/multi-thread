@@ -5,9 +5,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/2/15 12:08 下午
- * @desc ：
+ * @desc ：retry: 使用方法 break retry;
  */
-public class Code04 {
+public class Code04_retry {
     private static final int COUNT_BITS = Integer.SIZE - 3;
     private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
 
