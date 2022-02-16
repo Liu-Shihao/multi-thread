@@ -8,6 +8,9 @@ package com.lsh.day02;
  * 不使用volatile修饰的变量running，则主线程修改为false 后，另一个线程不会看见，所以不会停止
  * 而使用volatile修饰的变量running_volatile，主线程修改为false 后，另一个线程看见，则停止
  *
+ * volatile 引用数据类型（包括数组）只能保证引用本身的可见性，不能保证内部字段的可见性
+ *
+ *
  */
 public class Code02_Volatile2 {
 
@@ -16,7 +19,8 @@ public class Code02_Volatile2 {
 
     public static void m(){
         System.out.println("start");
-        while (running_volatile){
+        while (running){
+            //注意：如果循环内执行println，则线程会停止，因为println方法是synchronized
 //            System.out.println("running");
         }
         System.out.println("end ");
@@ -31,6 +35,7 @@ public class Code02_Volatile2 {
             e.printStackTrace();
         }
         running_volatile = false;
+        running = false;
 
     }
 }
