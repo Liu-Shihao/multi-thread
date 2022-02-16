@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
  *
  *
  */
-public class Code02 {
+public class Code02_InvokeAny {
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
