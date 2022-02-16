@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @date ：Created in 2022/2/14 4:20 下午
  * @desc ：
  */
-public class Code03_ThreadPool {
+public class Code03_CreateThreadPool {
     public static void main(String[] args) throws Exception {
 
         /**
