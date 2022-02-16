@@ -1,4 +1,4 @@
-package com.lsh.day01.day02;
+package com.lsh.day02;
 
 /**
  * @author ：LiuShihao
@@ -9,7 +9,7 @@ package com.lsh.day01.day02;
  * t1.resume()     线程回复，此方法已经被弃用
  *
  */
-public class Code01_Stop {
+public class Code01_Stop_Suspend_Resume {
 
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
