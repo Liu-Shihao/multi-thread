@@ -3,7 +3,12 @@ package com.lsh.day02;
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/2/16 3:40 下午
- * @desc ：使用volatile结束线程
+ * @desc ：volatile
+ * volatile有两大作用：
+ * 1.线程可见
+ * 2.禁止指令重排序
+ *
+ * 使用volatile结束线程
  * 线程的可见性，存在一个变量，当一个线程修改了这个变量的值，另一个线程是不会看见的。
  * 如果需要变量所有线程可见，则需要使用volatile变量修饰。
  * 使用volatile变量结束线程

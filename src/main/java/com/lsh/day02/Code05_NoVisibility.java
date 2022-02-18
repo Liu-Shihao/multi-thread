@@ -7,11 +7,6 @@ package com.lsh.day02;
  * 在这个程序中存在两个问题
  * 1.可见性  ready变量的不可见问题
  * 2.有序性  ready = true;number = 48; 可能存在乱序问题，导致输出为0
- *
- *
- *
- *
- *
  */
 public class Code05_NoVisibility {
 
