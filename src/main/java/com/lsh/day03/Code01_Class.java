@@ -1,5 +1,7 @@
 package com.lsh.day03;
 
+import org.openjdk.jol.info.ClassLayout;
+
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/2/17 9:48 上午
@@ -14,9 +16,12 @@ package com.lsh.day03;
  * 8.Class对象是在堆还是方法区？
  */
 public class Code01_Class {
-//    public static void main(String[] args) {
-//        Object o = new Object();
-//        String s = ClassLayout.parseInstance(o).toPrintable();
-//        System.out.println(s);
-//    }
+    public static void main(String[] args) {
+        Object o = new Object();
+        System.out.println(ClassLayout.parseInstance(o).toPrintable());
+        //使用synchronized加锁
+        synchronized (o){
+            System.out.println(ClassLayout.parseInstance(o).toPrintable());
+        }
+    }
 }
