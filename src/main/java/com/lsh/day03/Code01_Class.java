@@ -14,9 +14,16 @@ import org.openjdk.jol.info.ClassLayout;
  * 6.对象怎么分配（栈上 - 线程本地 - Eden - Old）
  * 7. Object o = new Object()在内存中占多少字节？
  * 8.Class对象是在堆还是方法区？
+ *
+ * 默认情况下，偏向锁有个延时，默认是4秒，JVM启动过程会有很多线程竞争，所以默认情况启动时不打开偏向锁，过一段时间之后再；打开偏向锁。
  */
 public class Code01_Class {
     public static void main(String[] args) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Object o = new Object();
         System.out.println(ClassLayout.parseInstance(o).toPrintable());
         //使用synchronized加锁
