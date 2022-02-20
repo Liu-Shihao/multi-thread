@@ -28,15 +28,35 @@ package com.lsh.day03;
  *
  */
 public class Code02_Singleton2_DCL {
-    private static  Code02_Singleton2_DCL INSTANTCE;
+
+    //不加volatile会存在对象逸出问题
+    private static volatile   Code02_Singleton2_DCL INSTANTCE;
+
+    /**
+     * 构造方法私有化，隐藏构造方法，不允许外界调用
+     */
     private Code02_Singleton2_DCL(){
 
     }
+
+    /**
+     * 对外提供实例对象
+     *
+     * 1.不加synchronized，在多线程情况下，如果两个线程都判断了实例为空，那么两个线程都会创建一个对象，就会导致两个对象，不是单例模式。
+     * 2.Synchronized没有加在方法上，加在了方法内部：
+     *   此时如果两个线程都判断了实例对象为空，但是只有一个线程获得了锁，另一个线程则会等待锁，此时第一个线程创建对象完成释放锁，
+     *   那么第二个线程依然会获得锁并创建对象。所以需要DCL（双重检查）
+     * 3.如果没有DCL：
+     *   当第一个线程判断实例为空，此时会创建对象。但是在创建对象的过程中，发生了指令重排序，
+     *   已经建立了对象的引用，但是此时对象还未初始化，
+     *   另一个线程此时来获得实例，发现实例已经创建，直接拿走用了（此时对象还未真正初始化完成，这就是对象逸出了）
+     * @return
+     */
     public static Code02_Singleton2_DCL getInstance(){
         //在synchronized之前加个判断可以提高效率，因为竞争锁的资源消耗是非常高的，先通过一个判断就可以直接过滤非常多线程，
         // 加了判断不会导致线程上来就竞争所锁，提高效率
         if (INSTANTCE == null){
-            //Double Check Lock
+            //双重检查 Double Check Lock
             synchronized (Code02_Singleton2_DCL.class){
                 if (INSTANTCE == null){
                     try {
