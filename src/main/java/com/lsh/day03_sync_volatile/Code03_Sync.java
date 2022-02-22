@@ -1,4 +1,4 @@
-package com.lsh.day03;
+package com.lsh.day03_sync_volatile;
 
 import java.util.concurrent.CountDownLatch;
 

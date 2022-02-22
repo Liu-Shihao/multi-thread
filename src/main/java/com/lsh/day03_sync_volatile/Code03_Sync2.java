@@ -1,4 +1,4 @@
-package com.lsh.day03;
+package com.lsh.day03_sync_volatile;
 
 /**
  * @author ：LiuShihao
@@ -9,16 +9,18 @@ package com.lsh.day03;
  * 1. 悲观的认为这个操作会被别的线程打断（悲观锁）synchronized（上一个小程序）
  *
  * 2. 乐观的认为这个做不会被别的线程打断（乐观锁 自旋锁 无锁）cas操作
+ *
+ * Synchronized 修饰的锁是一个对象的时候，对象不能改变
  */
 public class Code03_Sync2 {
-    private static Object  o = new Object();
+    private static final Object  o = new Object();
 
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
             new Thread(()->{
                 /**
                  * synchronized (o 管程){
-                 *      临界区 大 锁的粒度大；小 粒度小
+                 *  临界区 大 锁的粒度大；小 粒度小
                  * }
                  */
                 synchronized (o){
