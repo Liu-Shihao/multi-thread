@@ -32,11 +32,12 @@ public class Code03_Synchronized {
      * m2 方法的锁对象是 s2
      * 但是m1和m2却不能同步执行
      */
-    public static class T{
+    static class T{
+
         static String s1 = "hello";
         static String s2 = "hello";
 
-         static void m1(){
+        static void m1(){
              synchronized (s1){
                  while (true){
                      try {
@@ -50,7 +51,7 @@ public class Code03_Synchronized {
 
              }
          }
-         static void m2(){
+        static void m2(){
              synchronized (s2){
                  while (true){
                      try {
@@ -72,6 +73,7 @@ public class Code03_Synchronized {
 //        o = new Object();
 //        t2.start();
         System.out.println("--------");
+        Code03_Synchronized code03_synchronized = new Code03_Synchronized();
         new Thread(T::m1,"t1").start();
         new Thread(T::m2,"t2").start();
 
