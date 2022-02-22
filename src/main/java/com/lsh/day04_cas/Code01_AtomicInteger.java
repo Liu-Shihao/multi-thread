@@ -15,7 +15,7 @@ public class Code01_AtomicInteger {
               count.incrementAndGet();
           }
       }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Code01_AtomicInteger code01_atomicInteger = new Code01_AtomicInteger();
 
         Thread[] threads = new Thread[100];
@@ -25,7 +25,12 @@ public class Code01_AtomicInteger {
         for (Thread thread : threads) {
             thread.start();
         }
+        for (Thread thread : threads) {
+            thread.join();
+        }
         System.out.println(code01_atomicInteger.count.get());
+
+
     }
 
 
