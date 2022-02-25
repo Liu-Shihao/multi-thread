@@ -13,9 +13,10 @@ public class Test02 {
     static Thread t1 = new Thread();
     static Thread t2 = new Thread();
     public static void main(String[] args) {
-//        System.out.println("1 :"+Integer.valueOf('1'));
-//        System.out.println("a :"+Integer.valueOf('a'));
-//        System.out.println("A :"+Integer.valueOf('A'));
+//        System.out.println("1 :"+Integer.valueOf('1'));//1 :49
+//        System.out.println("a :"+Integer.valueOf('a'));//a :97
+//        System.out.println("A :"+Integer.valueOf('A'));//A :65
+//        System.out.println((char)98);//b
 
         t1 = new Thread(() -> {
             for (int i = 0; i < 26; i++) {
