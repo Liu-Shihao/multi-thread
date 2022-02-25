@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.LongAdder;
  * AtomicInteger本身方法都是原子性的，底层通过cas实现 乐观锁
  * LongAdder内部使用分段锁，所以效率高
  */
-public class Code01_AtomicInteger {
+public class Code01_Increment {
     static Long count1 = 0L;
     static AtomicLong count2=  new AtomicLong(0);
     static LongAdder count3 = new LongAdder();
@@ -19,7 +19,6 @@ public class Code01_AtomicInteger {
     static final Object lock = new Object();
 
     static int testTime = 10000;
-
     static int threadNum = 1000;
 
 
@@ -44,7 +43,7 @@ public class Code01_AtomicInteger {
         long start1 = System.currentTimeMillis();
         Thread[] threads = new Thread[threadNum];
         for (int i = 0; i < threadNum; i++) {
-            threads[i] = new Thread(Code01_AtomicInteger::m1,"t"+i);
+            threads[i] = new Thread(Code01_Increment::m1,"t"+i);
         }
         for (Thread thread : threads) {
             thread.start();
@@ -58,7 +57,7 @@ public class Code01_AtomicInteger {
 
         long start2 = System.currentTimeMillis();
         for (int i = 0; i < threadNum; i++) {
-            threads[i] = new Thread(Code01_AtomicInteger::m2,"t"+i);
+            threads[i] = new Thread(Code01_Increment::m2,"t"+i);
         }
         for (Thread thread : threads) {
             thread.start();
@@ -71,7 +70,7 @@ public class Code01_AtomicInteger {
 
         long start3 = System.currentTimeMillis();
         for (int i = 0; i < threadNum; i++) {
-            threads[i] = new Thread(Code01_AtomicInteger::m3,"t"+i);
+            threads[i] = new Thread(Code01_Increment::m3,"t"+i);
         }
         for (Thread thread : threads) {
             thread.start();
