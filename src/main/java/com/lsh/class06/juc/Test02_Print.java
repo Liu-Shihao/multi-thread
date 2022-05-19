@@ -9,7 +9,7 @@ import java.util.concurrent.locks.LockSupport;
  * 一个线程打印 ABCD..
  * 一个线程打印 1234..
  */
-public class Test02 {
+public class Test02_Print {
     static Thread t1 = new Thread();
     static Thread t2 = new Thread();
     public static void main(String[] args) {
