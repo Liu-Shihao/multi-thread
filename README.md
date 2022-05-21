@@ -16,6 +16,26 @@ ThreadPoolExecutor：普通线程池类
 ForkJoinPool：
 ScheduledExecutorService：
 ScheduledThreadPoolExecutor：
+
+
+# 容器
+List：ArrayList、Vector、LinkedList
+Set：HashSet -> LinkedHashSet、TreeSet
+Queue：BlockingQueue   重要
+key:value
+Map：HashMap -> LinkedHashMap、Hashtable、TreeMap
+
+Hashtable ->  HashMap  -> synchronizedMap() -> ConcurrentHashMap
+Vector -> ArrayList -> ConcurrentLinkedQueue
+
+Queue和List的区别？
+    Queue增加了对线程友好的API offer、poll、peek等
+    BlockingQueue：put（）、take（）实现阻塞
+
+
+
+
 # 多线程面试题
 1. 两个线程交叉打印A1B2C3D4...Z26
-2. 
+2. 写一个固定容量同步容器，拥有put和get以及getCount方法，能够支持两个生产者和10个消费者线程的阻塞调用
+

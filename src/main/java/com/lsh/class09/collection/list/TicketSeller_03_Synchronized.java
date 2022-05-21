@@ -1,4 +1,4 @@
-package com.lsh.class09.collection;
+package com.lsh.class09.collection.list;
 
 import java.util.LinkedList;
 import java.util.List;

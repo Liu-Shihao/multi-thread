@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * @date ：Created in 2022/2/25 10:58 上午
  * @desc ：CountDownLatch  倒计时
  *
- * 等待线程可以用CountDownLatch、join
+ * 等待线程可以用 CountDownLatch、join
  */
 public class Code01_CountDownLatch {
     public static void main(String[] args) throws InterruptedException {

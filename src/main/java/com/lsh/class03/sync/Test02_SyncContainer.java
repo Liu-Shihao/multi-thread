@@ -1,18 +1,18 @@
-package com.lsh.day03_sync_volatile;
-
+package com.lsh.class03.sync;
 import java.util.LinkedList;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/3/20 2:54 下午
- * @desc ：
+ * @desc ：面试题:两个生产者、一个队列、十个消费者 实现阻塞调用,拥有get put getCount 方法
  *
- * 两个生产者、一个队列、
+ *
+ *
+ *
  */
-public class Code04_SyncContainer {
-
-    ReentrantLock lock = new ReentrantLock();
+public class Test02_SyncContainer {
 
 
 
@@ -21,8 +21,12 @@ public class Code04_SyncContainer {
        private final Integer MAX = 10;//最多10个元素
        private int count;
 
-       public synchronized void set(T t){
-           while (list.size() == MAX){
+        private ReentrantLock lock = new ReentrantLock();
+        private Condition producer = lock.newCondition();
+        private Condition consumer = lock.newCondition();
+
+        public synchronized void set(T t){
+            while (list.size() == MAX){
                try {
                    this.wait();
                } catch (InterruptedException e) {

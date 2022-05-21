@@ -21,8 +21,7 @@ public class Code05_LockSupport {
                 }
                 System.out.println(i);
                 if (i == 5 ){
-                    //LockSupport.park(); 阻塞
-                    LockSupport.park();
+                    LockSupport.park();//阻塞
                 }
             }
         });

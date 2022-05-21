@@ -1,5 +1,4 @@
-package com.lsh.day03_sync_volatile;
-
+package com.lsh.class03.sync;
 import org.openjdk.jol.info.ClassLayout;
 
 /**

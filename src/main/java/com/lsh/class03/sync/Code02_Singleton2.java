@@ -1,5 +1,4 @@
-package com.lsh.day03_sync_volatile;
-
+package com.lsh.class03.sync;
 /**
  * @author ：LiuShihao
  * @date ：Created in 2022/2/17 10:29 上午

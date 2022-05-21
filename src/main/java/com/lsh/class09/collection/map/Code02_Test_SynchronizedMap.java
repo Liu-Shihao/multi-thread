@@ -1,7 +1,6 @@
-package com.lsh.class09.collection;
+package com.lsh.class09.collection.map;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author ：LiuShihao
@@ -23,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *  Hashtable --> HashMap -->Collections.synchronizedMap()-->CurrentHashMap
  *
  */
-public class Code03_Test_ConcurrentHashMap {
+public class Code02_Test_SynchronizedMap {
 
     private static int CAPACITY = 1000000;
     private static int THREAD_NUM = 100;
@@ -35,7 +34,7 @@ public class Code03_Test_ConcurrentHashMap {
             valus[i] = UUID.randomUUID();
         }
     }
-    static ConcurrentHashMap<UUID, UUID> concurrentHashMap = new ConcurrentHashMap<>();
+    static Map<UUID, UUID> synchronizedMap = Collections.synchronizedMap(new HashMap<>());
 
     public static void main(String[] args) {
 
@@ -52,7 +51,7 @@ public class Code03_Test_ConcurrentHashMap {
             System.out.println(startNum+"-------");
             threads[i] = new Thread(()->{
                 for (int j = startNum; j < startNum+CAPACITY/THREAD_NUM; j++) {
-                    concurrentHashMap.put(keys[j],valus[j]);
+                    synchronizedMap.put(keys[j],valus[j]);
                 }
             });
         }
@@ -67,16 +66,15 @@ public class Code03_Test_ConcurrentHashMap {
                 e.printStackTrace();
             }
         }
-        System.out.println(concurrentHashMap.size());
+        System.out.println(synchronizedMap.size());
 
         System.out.println(System.currentTimeMillis()-start);
 
         long start2 = System.currentTimeMillis();
-
         for (int i = 0; i < THREAD_NUM; i++) {
             threads[i] = new Thread(()->{
                 for (int i1 = 0; i1 < 1000000; i1++) {
-                    concurrentHashMap.get(keys[10]);
+                    synchronizedMap.get(keys[10]);
                 }
             });
         }
@@ -90,11 +88,9 @@ public class Code03_Test_ConcurrentHashMap {
                 e.printStackTrace();
             }
         }
-
         System.out.println(System.currentTimeMillis()-start2);
-        //2324
-        //747
-
+        //683
+        //5751
 
 
 
