@@ -38,6 +38,9 @@ public class Code01_Test_Hashtable {
     static Hashtable<UUID, UUID> hashtable = new Hashtable<>();
 
     public static void main(String[] args) {
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        hashMap.put("","");
+
 
         /**
          * 100W的数据

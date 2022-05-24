@@ -2,6 +2,7 @@ package com.lsh.class09.collection.map;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * @author ：LiuShihao
@@ -18,6 +19,8 @@ public class Code09_ConcurrentMap {
         ConcurrentHashMap<Object, Object> concurrentHashMap = new ConcurrentHashMap<>();
 
         ConcurrentSkipListMap<Object, Object> concurrentSkipListMap = new ConcurrentSkipListMap<>();
+        ConcurrentSkipListSet<Object> concurrentSkipListSet = new ConcurrentSkipListSet<>();
+
 
     }
 }

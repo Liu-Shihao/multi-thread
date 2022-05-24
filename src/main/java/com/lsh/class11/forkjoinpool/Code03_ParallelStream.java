@@ -28,6 +28,16 @@ public class Code03_ParallelStream {
 
     }
 
+    public static void foreach(){
+        ArrayList<Integer> nums = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 10000; i++) {
+            nums.add(random.nextInt(1000000));
+        }
+        nums.forEach(v->isPrime(v));
+        nums.parallelStream().forEach(Code03_ParallelStream::isPrime);
+    }
+
     //判断是否为质数
     public static boolean isPrime(int n){
         for (int i = 2; i < n>>>1; i++) {
