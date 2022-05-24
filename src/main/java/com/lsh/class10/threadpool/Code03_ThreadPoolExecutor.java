@@ -50,6 +50,10 @@ public class Code03_ThreadPoolExecutor {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             //TODO 投递MQ
+            //重新投递任务队列中 判断任务队列中的任务数量是否小于定义的队列容量
+            if (executor.getQueue().size() < 10000){
+                executor.getQueue().offer(r);
+            }
         }
     }
 }
